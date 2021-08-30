@@ -1,0 +1,28 @@
+version: '3.5'
+
+networks:
+   docknet:
+
+services: 
+  database:
+    networks:
+      - docknet
+    build: ./database
+    ports:
+      - 3307:3306
+  backend:
+    networks:
+      - docknet     
+    build: ./backend
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - 3000:3000
+    links:
+      - database    
+    depends_on: 
+      - database
+    environment:
+      MYSQL_HOST_IP: database 
+    command: >
+      sh -c "/app/wait-for-it.sh database:3306 -t 0 && npm start"

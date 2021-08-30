@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 let mysql = require('mysql2');
 let db = mysql.createConnection({
-  host: `${NODE_ENV_HOST}`,
+  host:`${process.env.MYSQL_HOST_IP}`,
   user: 'root',
   password: 'auguststart08!',
   database: 'dockertest'
@@ -20,7 +20,5 @@ app.listen(3000, ()=>{
     console.log("connect success")
 })
 
-if(dbhost){
-    console.log(dbhost)
-}
+
 console.log('ho')
