@@ -10,6 +10,8 @@ services:
     build: ./database
     ports:
       - 3307:3306
+    volumes:
+      - ./mysql-vol:/var/lib/mysql
   backend:
     networks:
       - docknet     
