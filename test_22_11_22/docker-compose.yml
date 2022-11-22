@@ -1,0 +1,26 @@
+services:
+  graph_manager:
+    container_name: graph_manager
+    build: ./graph_manager
+    ports:
+      - 5000:5000
+
+  searcher:
+    container_name: searcher
+    build: ./searcher
+
+  # adminer:
+  #   image: dockette/adminer:full
+  #   ports:
+  #     - 8081:80
+
+  # monkey_db:
+  #   image: postgres:bullseye
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     # - POSTGRES_SERVER=test
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=1234
+  #     - POSTGRES_DB=app
+  
